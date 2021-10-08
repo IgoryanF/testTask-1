@@ -47,9 +47,11 @@ const DataList = () => {
     }, [rates])
 
 
+    console.log(data.length)
+
     const [startSlice, endSlice] = useMemo(() => {
         if (currentPosition === 1) {
-            return [currentPosition, currentPosition * size + 1];
+            return [currentPosition - 1, currentPosition * size ];
         } else if (currentPosition === data.length) {
             return [(currentPosition - 1) * size, data.length + 1];
         } else {
@@ -87,7 +89,7 @@ const DataList = () => {
                             key={key}
                             currencyName={key}
                             value={value}
-                            index={startSlice + index}
+                            index={startSlice + index + 1}
                         />
                     )}
                 </Flex>
